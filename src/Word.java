@@ -9,6 +9,9 @@ public class Word
     {
         return this.contain;
     }
+    public Letter get(int index){
+        return this.contain.get(index);
+    }
 
     Iterator<Letter> iterator()
     {
