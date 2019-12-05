@@ -88,6 +88,10 @@ public class States<S>
         
      return Output; 
     }
+
+    public boolean isEmpty(){
+        return this.size() <= 0;
+    }
     
     
     

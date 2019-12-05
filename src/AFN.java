@@ -35,7 +35,7 @@ public class AFN<S> {
     public Transitions<S> getTransitionRelation() {
         return transitionRelation;
     }
-    public boolean Recognize(Word w){
+    public boolean recognize(Word w){
         States<S> cur = setOfInitialStates;
         for (int i = 0; i <w.size() ; i++) {
             cur=transitionRelation.successors(cur,w.get(i));
@@ -49,5 +49,9 @@ public class AFN<S> {
             if(this.setOfFinalStates.contains( iter.next()))return true;
         }
         return false;
+    }
+
+    public boolean emptyLanguage(){
+        return this.setOfInitialStates.isEmpty() || this.setOfFinalStates.isEmpty();
     }
 }
