@@ -36,10 +36,20 @@ public class AFN<S> {
         return transitionRelation;
     }
     public boolean recognize(Word w){
+
         States<S> cur = setOfInitialStates;
+//        System.out.println(cur);
+        System.out.println(w.size());
         for (int i = 0; i <w.size() ; i++) {
+            System.out.println("++++++++++++++");
+//            System.out.println(w.get(i));
+//            System.out.println(cur);
+//            Letter lcur = new Letter(w.get(i))
             cur=transitionRelation.successors(cur,w.get(i));
+//            System.out.println(cur);
+//            System.out.println(transitionRelation.successors(cur,w.get(i)));
         }
+
         return isFinal(cur);
     }
 
@@ -54,4 +64,11 @@ public class AFN<S> {
     public boolean emptyLanguage(){
         return this.setOfInitialStates.isEmpty() || this.setOfFinalStates.isEmpty();
     }
+
+    public boolean isDeterministic(){
+
+        return false;
+    }
+
+
 }

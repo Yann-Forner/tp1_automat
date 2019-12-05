@@ -46,15 +46,15 @@ public class Transitions<S>
      */
     States<S> successor(S s,Letter a)
     {
-     States<S> Targets = new States<S>(); 
-     Iterator<Transition<S>> AllTransitions = this.SetofTransitions.iterator();
-     while (AllTransitions.hasNext()){
-         Transition <S> newTransition = AllTransitions.next();
-         if(newTransition.getLabel() == a && newTransition.getSource() == s) {
-                Targets.addState(newTransition.getTarget());
-             }
-         }
-     return Targets; 
+        States<S> Targets = new States<S>();
+        Iterator<Transition<S>> AllTransitions = this.SetofTransitions.iterator();
+        while (AllTransitions.hasNext()) {
+            Transition<S> transition = AllTransitions.next();
+            if (transition.getLabel().equals(a) && transition.getSource().equals(s)) {
+                Targets.addState(transition.getTarget());
+            }
+        }
+        return Targets;
     }
     
  /**
@@ -64,16 +64,10 @@ public class Transitions<S>
     States<S> successors(States<S> set,Letter a)
     {
         States<S> Targets = new States<S>();
-        Iterator<S> AllStates = set.iterator();
-        while(AllStates.hasNext()) {
-            S newState = AllStates.next();
-            Iterator<Transition<S>> AllTransitions = this.SetofTransitions.iterator();
-            while (AllTransitions.hasNext()){
-                Transition <S> newTransition = AllTransitions.next();
-                if(newTransition.getLabel() == a && newTransition.getSource() == newState) {
-                    Targets.addState(newTransition.getTarget());
-                }
-            }
+        System.out.println(set + " =====");
+        for (S state : set.getSetofStates()) {
+            Targets.addAllStates(successor(state, a));
+            System.out.println(Targets);
         }
         return Targets;
     }

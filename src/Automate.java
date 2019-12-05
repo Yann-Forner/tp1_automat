@@ -22,7 +22,7 @@ public class Automate {
      Q.addState(state2);
      Q.addState(state3);
      
-     System.out.println(Q.toString());
+//     System.out.println(Q.toString());
      
      
      //création des transitions 
@@ -42,24 +42,48 @@ public class Automate {
     
     //affiche les successeurs par a de l'état q_1
     States E1 = Delta.successor(state1,letter1); 
-    System.out.println(E1.toString());
+//    System.out.println(E1.toString());
     
     //affiche les successeurs par a de l'état q_2
     States E2 = Delta.successor(state2,letter1);
-    System.out.println(E2.toString());
+//    System.out.println(E2.toString());
 
     //affiche les successeurs par a de l'état q_3
     States E3 = Delta.successor(state3,letter1);
-    System.out.println(E3.toString());
+//    System.out.println(E3.toString());
 
     //affiche les successeurs par b de {q_1, q_2}
     HashSet<State> H = new HashSet<State>();
     H.add(state1);
     H.add(state2);
     States<State> S1 = new States<State>(H);
-    States E4 = Delta.successors(S1,letter2);
-    System.out.println(S1.toString());
-    System.out.println(E4.toString());
+//    States E4 = Delta.successors(S1,letter2);
+//    System.out.println(S1.toString());
+//    System.out.println(E4.toString());
+
+    HashSet<Letter> alphabet = new HashSet<>();
+    alphabet.add(new Letter("a"));
+    alphabet.add(new Letter("b"));
+
+    States<State> stateStates = new States<>();
+
+    stateStates.addState(state1);
+    stateStates.addState(state2);
+    stateStates.addState(state2);
+
+    States<State> initialStates = new States<>();
+
+    initialStates.addState(state1);
+
+    States<State> finalStates = new States<>();
+
+    finalStates.addState(state3);
+
+
+    AFN afn = new AFN(alphabet,stateStates,initialStates,finalStates,Delta);
+
+    Word w = new Word("b");
+        System.out.println(afn.recognize(w));
 
     }
 }
