@@ -36,7 +36,14 @@ public class States<S>
     {
         return this.SetofStates;
     }
-    
+
+    public int size(){
+        return this.SetofStates.size();
+    }
+
+    public boolean contains(S s){
+        return this.SetofStates.contains(s);
+    }
     /**
      * Ajout d'un état 
      */

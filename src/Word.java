@@ -17,4 +17,7 @@ public class Word
     {
         return contain.iterator();
     }
+    public  int size(){
+        return this.contain.size();
+    }
 }

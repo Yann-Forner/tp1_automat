@@ -1,11 +1,12 @@
 import java.util.HashSet;
+import java.util.Iterator;
 
 public class AFN<S> {
-    private HashSet<Letter> alphabet = new HashSet<>(0);
-    States<S> setOfStates = new States<>();
-    States<S> setOfInitialStates = new States<>();
-    States<S> setOfFinalStates = new States<>();
-    Transitions<S> transitionRelation = new Transitions<>();
+    private HashSet<Letter> alphabet ;
+    States<S> setOfStates ;
+    States<S> setOfInitialStates ;
+    States<S> setOfFinalStates ;
+    Transitions<S> transitionRelation ;
 
     public AFN(HashSet<Letter> alphabet, States<S> setOfStates, States<S> setOfInitialStates, States<S> setOfFinalStates, Transitions<S> transitionRelation) {
         this.alphabet = alphabet;
@@ -33,5 +34,20 @@ public class AFN<S> {
 
     public Transitions<S> getTransitionRelation() {
         return transitionRelation;
+    }
+    public boolean Recognize(Word w){
+        States<S> cur = setOfInitialStates;
+        for (int i = 0; i <w.size() ; i++) {
+            cur=transitionRelation.successors(cur,w.get(i));
+        }
+        return isFinal(cur);
+    }
+
+    public boolean isFinal(States<S> states){
+        Iterator<S> iter = states.iterator();
+        while (iter.hasNext()){
+            if(this.setOfFinalStates.contains( iter.next()))return true;
+        }
+        return false;
     }
 }
