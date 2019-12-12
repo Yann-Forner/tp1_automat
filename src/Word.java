@@ -1,33 +1,21 @@
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.*;
 
-/** classe Word .*/
-public class Word
-{
-    private ArrayList<Letter> contain= new ArrayList<>(0);
+/**
+ * classe Word .
+ */
+public class Word {
 
-    public Word(String str) {
-        for (int i = 0; i <str.length() ; i++) {
-            contain.add(new Letter(String.valueOf(str.charAt(i))));
-        }
-        System.out.println(contain.getClass().toString());
+    private ArrayList<Letter> contain;
+
+    public Word(ArrayList<Letter> contain) {
+        this.contain = contain;
     }
 
-
-    public ArrayList<Letter> getContain()
-    {
+    public ArrayList<Letter> getContain() {
         return this.contain;
     }
-    public Letter get(int index){
-//        System.out.println(this.contain.get(index));
-        return this.contain.get(index);
-    }
 
-    Iterator<Letter> iterator()
-    {
+    Iterator<Letter> iterator() {
         return contain.iterator();
-    }
-    public  int size(){
-        return this.contain.size();
     }
 }

@@ -30,20 +30,13 @@ public class States<S>
     }
 
     /**
-     * accesseur pourSetofStates
+     * accesseur pour SetofStates
      */
     public HashSet<S> getSetofStates()
     {
         return this.SetofStates;
     }
-
-    public int size(){
-        return this.SetofStates.size();
-    }
-
-    public boolean contains(S s){
-        return this.SetofStates.contains(s);
-    }
+    
     /**
      * Ajout d'un état 
      */
@@ -68,31 +61,25 @@ public class States<S>
     {
      return this.SetofStates.iterator();       
     }
-    
-    
+
+
+    public boolean contains(S s){
+        return this.SetofStates.contains(s);
+    }
     /**
      * representation en String d'un ensemble d'états 
      */
-    public String toString()
-    {
-     Iterator<S> AllStates = this.SetofStates.iterator();
-     String Output = "[ ";
-     
-     while (AllStates.hasNext())
-     {  
-       S etat = AllStates.next();
-       Output = Output + etat.toString()+ " ";     
-     }
-        
-     Output = Output+"]";
-        
-     return Output; 
+    public String toString()     {
+         Iterator<S> AllStates = this.SetofStates.iterator();
+         String Output = "[ ";
+
+         while (AllStates.hasNext()) {
+               S etat = AllStates.next();
+               Output = Output + etat.toString()+ " ";
+         }
+         Output = Output+"]";
+
+         return Output;
     }
 
-    public boolean isEmpty(){
-        return this.size() <= 0;
-    }
-    
-    
-    
 }

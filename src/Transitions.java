@@ -46,15 +46,15 @@ public class Transitions<S>
      */
     States<S> successor(S s,Letter a)
     {
-        States<S> Targets = new States<S>();
-        Iterator<Transition<S>> AllTransitions = this.SetofTransitions.iterator();
+     States<S> Targets = new States<S>(); 
+     Iterator<Transition<S>> AllTransitions = this.SetofTransitions.iterator();
         while (AllTransitions.hasNext()) {
             Transition<S> transition = AllTransitions.next();
-            if (transition.getLabel().equals(a) && transition.getSource().equals(s)) {
+            if (transition.getLabel() == a && transition.getSource() == s) {
                 Targets.addState(transition.getTarget());
             }
         }
-        return Targets;
+     return Targets; 
     }
     
  /**
@@ -64,14 +64,10 @@ public class Transitions<S>
     States<S> successors(States<S> set,Letter a)
     {
         States<S> Targets = new States<S>();
-        System.out.println(set + " =====");
         for (S state : set.getSetofStates()) {
             Targets.addAllStates(successor(state, a));
-            System.out.println(Targets);
         }
         return Targets;
     }
-
-
     
  }
