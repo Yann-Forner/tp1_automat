@@ -29,5 +29,5 @@ public class Transition<S>
     
     public Letter getLabel()
     {return this.label;}
- 
+
 }

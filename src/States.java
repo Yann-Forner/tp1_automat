@@ -82,4 +82,8 @@ public class States<S>
          return Output;
     }
 
+    public void remove(S s){
+        this.SetofStates.remove(s);
+    }
+
 }

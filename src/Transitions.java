@@ -69,5 +69,12 @@ public class Transitions<S>
         }
         return Targets;
     }
-    
+    public void remove(S s){
+        for (Transition<S> transition : this.SetofTransitions
+             ) {
+            if(transition.getSource() == s || transition.getTarget() == s){
+                this.SetofTransitions.remove(s);
+            }
+        }
+    }
  }

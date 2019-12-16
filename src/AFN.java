@@ -176,4 +176,36 @@ public class AFN<S> {
         return myStatesCoReachable;
     }
 
+    public void Trim(){
+        States<S> Reachables = this.Reachable();
+        States<S> CoReachables = this.Coreachable();
+        States<S> removableStates = new States<>();
+        Iterator<S> sIterator = this.getSetOfStates().iterator();
+        while (sIterator.hasNext()){
+            S current =sIterator.next();
+            if(!Reachables.contains(current) && !CoReachables.contains(current)){
+                removableStates.addState(current);
+            }
+        }
+
+        this.removeStates(removableStates);
+    }
+
+    public void removeStates(States<S> states){
+        States<S> Reachables = this.Reachable();
+        States<S> CoReachables = this.Coreachable();
+        while(states.getSetofStates().size()!=0){
+            Iterator<S> sIterator =states.iterator();
+            while (sIterator.hasNext()){
+                S current =sIterator.next();
+                if(!Reachables.contains(current) && !CoReachables.contains(current)){
+                    this.SetOfStates.remove(current);
+                    this.TransitionRelation.remove(current);
+                    states.remove(current);
+                    break;
+                }
+            }
+        }
+    }
+
 }

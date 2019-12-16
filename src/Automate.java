@@ -22,6 +22,7 @@ public class Automate {
          Q.addState(state1);
          Q.addState(state2);
          Q.addState(state3);
+         Q.addState(new State("q_4"));
 
 //         System.out.println(Q.toString());
 
@@ -89,6 +90,10 @@ public class Automate {
 //        System.out.println(afn.isComplete());
 //        afn.Complete();
 //        System.out.println(afn.isComplete());
-        System.out.println(afn.Coreachable());
+//        System.out.println(afn.Reachable());
+//        System.out.println(afn.Coreachable());
+        System.out.println(afn.getSetOfStates());
+        afn.Trim();
+        System.out.println(afn.getSetOfStates());
     }
 }
