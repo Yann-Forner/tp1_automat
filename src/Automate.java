@@ -92,8 +92,11 @@ public class Automate {
 //        System.out.println(afn.isComplete());
 //        System.out.println(afn.Reachable());
 //        System.out.println(afn.Coreachable());
-        System.out.println(afn.getSetOfStates());
-        afn.Trim();
-        System.out.println(afn.getSetOfStates());
+//        System.out.println(afn.getSetOfStates());
+//        afn.Trim();
+//        System.out.println(afn.getSetOfStates());
+          AFN<State> afn1 =afn.Mirror();
+          afn1.Trim();
+            System.out.println(afn1.getSetOfStates());
     }
 }

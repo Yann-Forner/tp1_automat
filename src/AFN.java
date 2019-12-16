@@ -208,4 +208,14 @@ public class AFN<S> {
         }
     }
 
+    public AFN<S> Mirror(){
+        Transitions<S> myTransitionsMirrors = new Transitions<>();
+        for (Transition<S> trans: this.getTransitionRelation().getSetofTransitions()
+             ) {
+            myTransitionsMirrors.addTransition(new Transition<>(trans.getTarget(),trans.getLabel(),trans.getSource()));
+        }
+        return new AFN<>(this.Alphabet,this.SetOfStates,this.SetOfFinalStates,this.SetOfInitialStates,myTransitionsMirrors);
+
+    }
+
 }
