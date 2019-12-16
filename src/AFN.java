@@ -154,26 +154,7 @@ public class AFN<S> {
     }
 
     public States<S> Coreachable(){
-        States<S> myStatesCoReachable = new States<>();
-        if(this.getSetOfFinalStates().getSetofStates().isEmpty())return myStatesCoReachable;
-        for (S s: this.getSetOfStates().getSetofStates()
-             ) {
-            S current = s;
-            States<S> myNextCurrent;
-            Iterator<Letter> iterator = getAlphabet().iterator();
-            while (iterator.hasNext()) {
-                myNextCurrent = this.getTransitionRelation().successor(current,iterator.next());
-                Iterator<S> sIterator = myNextCurrent.iterator();
-                while (sIterator.hasNext()){
-                    if(isFinal(sIterator.next())){
-                        myStatesCoReachable.addState(s);
-                        break;
-                    }
-                }
-            }
-
-        }
-        return myStatesCoReachable;
+       return this.Mirror().Reachable();
     }
 
     public void Trim(){
