@@ -89,6 +89,6 @@ public class Automate {
 //        System.out.println(afn.isComplete());
 //        afn.Complete();
 //        System.out.println(afn.isComplete());
-        System.out.println(afn.Reachable());
+        System.out.println(afn.Coreachable());
     }
 }
